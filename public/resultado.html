@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resultado da Emoção</title>
+
+  <style>
+    :root {
+      --bg: #0c1b2a;
+      --bg-soft: #10263b;
+      --text: #e8f1f8;
+      --muted: #b7c7d6;
+      --accent: #2dd4bf;
+      --accent-2: #60a5fa;
+      --danger: #ef4444;
+      --shadow: rgba(0,0,0,0.25);
+    }
+    .light {
+      --bg: #f7fbff;
+      --bg-soft: #eaf2f9;
+      --text: #0f172a;
+      --muted: #334155;
+      --accent: #0ea5e9;
+      --accent-2: #10b981;
+      --danger: #dc2626;
+      --shadow: rgba(0,0,0,0.12);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: system-ui, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: .3rem;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.6rem;
+      color: var(--accent);
+      margin: 0 0 1rem 0;
+      text-align: center;
+    }
+    p {
+      color: var(--muted);
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-soft);
+      padding: 1rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px var(--shadow);
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      animation: fadeInUp 0.4s ease;
+    }
+    .card img {
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      width: 100%;
+      box-shadow: 0 6px 22px var(--shadow);
+    }
+
+    button {
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: 10px;
+      color: #0b1220;
+      font-weight: 600;
+      background: var(--accent);
+      cursor: pointer;
+      margin-top: .5rem;
+      transition: filter 0.2s ease, transform 0.08s ease;
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+    button:hover { filter: brightness(1.05); }
+    button:active { transform: translateY(1px); }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--bg-soft);
+      border: none;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      color: var(--text);
+      cursor: pointer;
+      box-shadow: 0 4px 14px var(--shadow);
+      transition: background 0.2s ease;
+    }
+    .theme-toggle:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      opacity: .7;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  
+  <button class="theme-toggle" onclick="toggleTheme()">🌓 Tema</button>
+
+  <h1>🌊 Emoção detectada:</h1>
+  <h2 id="emocaoTitle">Carregando...</h2>
+  <p id="confTitle"></p>
+
+  <div class="card">
+    <img id="imagemEmocao" alt="Imagem da emoção">
+    <button onclick="voltar()">⬅ Voltar</button>
+  </div>
+
+  <footer>
+    Projeto Escolar — Oceandria © <span id="anoAtual"></span>
+  </footer>
+
+  <script>
+    const imagensPorEmocao = {
+      feliz: [
+      'static/mar_feliz/1.png',
+      'static/mar_feliz/2.png',
+      'static/mar_feliz/3.png',
+      'static/mar_feliz/4.png',
+      'static/mar_feliz/5.png',
+      'static/mar_feliz/6.png',
+      'static/mar_feliz/7.png',
+      'static/mar_feliz/8.png',
+      'static/mar_feliz/9.png',
+      'static/mar_feliz/10.png',
+      'static/mar_feliz/11.png',
+      'static/mar_feliz/12.png',
+      'static/mar_feliz/13.png',
+      'static/mar_feliz/14.png',
+      'static/mar_feliz/15.png',
+      'static/mar_feliz/16.png',
+      'static/mar_feliz/17.png',
+      'static/mar_feliz/18.png',
+      'static/mar_feliz/19.png',
+      'static/mar_feliz/20.png'
+    ],
+
+
+      triste: [
+
+
+      'static/mar_triste/1.png',
+      'static/mar_triste/2.png',
+      'static/mar_triste/3.png',
+      'static/mar_triste/4.png',
+      'static/mar_triste/5.png',
+      'static/mar_triste/6.png',
+      'static/mar_triste/7.png',
+      'static/mar_triste/8.png',
+      'static/mar_triste/9.png',
+      'static/mar_triste/10.png',
+      'static/mar_triste/11.png',
+      'static/mar_triste/12.png',
+      'static/mar_triste/13.png',
+      'static/mar_triste/14.png',
+      'static/mar_triste/15.png',
+      'static/mar_triste/16.png',
+      'static/mar_triste/17.png',
+      'static/mar_triste/18.png',
+      'static/mar_triste/19.png',
+      'static/mar_triste/20.png',
+      'static/mar_triste/21.png',
+    ],
+
+
+      neutro: [
+
+
+      'static/mar_neutro/1.png',
+      'static/mar_neutro/2.png',
+      'static/mar_neutro/3.png',
+      'static/mar_neutro/4.png',
+      'static/mar_neutro/5.png',
+      'static/mar_neutro/6.png',
+      'static/mar_neutro/7.png',
+      'static/mar_neutro/8.png',
+      'static/mar_neutro/9.png',
+      'static/mar_neutro/10.png',
+      'static/mar_neutro/11.png',
+      'static/mar_neutro/12.png',
+      'static/mar_neutro/13.png',
+      'static/mar_neutro/14.png',
+      'static/mar_neutro/15.png',
+      'static/mar_neutro/16.png',
+      'static/mar_neutro/17.png',
+      'static/mar_neutro/18.png',
+      'static/mar_neutro/19.png',
+      'static/mar_neutro/20.png',
+    ]
+    };
+
+    const traducoes = {
+      happy: 'feliz',
+      sad: 'triste',
+      neutral: 'neutro',
+      angry: 'triste',
+      fearful: 'triste',
+      disgusted: 'triste',
+      surprised: 'feliz'
+    };
+
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    function imagemAleatoria(lista) {
+      return lista[Math.floor(Math.random() * lista.length)];
+    }
+
+    const emocaoOriginal = getQueryParam("emocao") || "neutral";
+    const conf = getQueryParam("conf") || "0";
+
+    const emocaoTraduzida = traducoes[emocaoOriginal] || "neutro";
+
+    document.getElementById("emocaoTitle").innerText =
+      emocaoTraduzida.charAt(0).toUpperCase() + emocaoTraduzida.slice(1);
+
+    document.getElementById("confTitle").innerText =
+      `Confiança: ${conf}%`;
+
+    if (imagensPorEmocao[emocaoTraduzida]) {
+      document.getElementById("imagemEmocao").src =
+        imagemAleatoria(imagensPorEmocao[emocaoTraduzida]);
+    }
+
+    function voltar() {
+      window.location.href = "index.html";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+    }
+
+    document.getElementById("anoAtual").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>

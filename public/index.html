@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Site educativo sobre poluição nos mares: causas, impactos e soluções sustentáveis para proteger a vida marinha. Equipe WIT." />
+  <title>Poluição nos Mares — Equipe WIT</title>
+<link rel="stylesheet" href="style.css">
+ <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.8.0/dist/tf.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+
+</head>
+<body>
+  <header>
+    <nav aria-label="Navegação principal" class="container">
+      <div class="brand">
+        <span class="brand-logo" aria-hidden="true"></span>
+        <span class="brand-name" aria-label="Nome da equipe">Equipe WIT</span>
+      </div>
+      <div class="nav-links" role="navigation" aria-label="Links de seção">
+        <a href="#curiosidades">Curiosidades</a>
+        <a href="#fatos">Fatos</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#faq">FAQ</a>
+        <button class="theme-toggle" id="btnTheme" aria-label="Alternar modo claro/escuro">Modo claro/escuro</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <article>
+        <h1 id="hero-title">Poluição nos Mares</h1>
+        <h2>Seu lixo não desaparece: ele volta com a maré</h2>
+        <p>O site aborda a poluição marinha e seus impactos nos oceanos, mostrando causas, consequências e soluções sustentáveis. É um espaço educativo para conscientizar sobre a importância de proteger a vida marinha e preservar o meio ambiente.</p>
+        <div class="hero-actions">
+          <button id="abrirIA" class="btn" aria-label="Iniciar reconhecimento facial">Reconhecimento Facial</button>
+          <button id="btnAbrirChatbot" class="btn secondary" aria-label="Abrir chatbot" aria-controls="chatbot">Abrir Chatbot</button>
+        </div>
+      </article>
+      <div class="hero-image" aria-hidden="false">
+        <!-- TODO: Substituir a imagem hero se desejar -->
+        <img src="https://images.pexels.com/photos/4813970/pexels-photo-4813970.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Resíduos plásticos flutuando no oceano, ilustrando a poluição marinha." />
+      </div>
+    </section>
+
+    <!-- Curiosidades -->
+    <section id="curiosidades" aria-labelledby="curios-title">
+      <h2 id="curios-title">Curiosidades</h2>
+      <p class="section-intro">Fatos rápidos para entender a dimensão do problema.</p>
+      <div class="curios-list">
+        <div class="curio">
+          <span class="curio-icon" aria-hidden="true"></span>
+          <p><strong>Impacto anual:</strong> Cerca de 8 milhões de toneladas de plástico chegam aos oceanos todos os anos.</p>
+        </div>
+        <div class="curio">
+          <span class="curio-icon" aria-hidden="true"></span>
+          <p><strong>Ilha de lixo:</strong> Há uma área no Pacífico com o dobro do tamanho da França.</p>
+        </div>
+        <div class="curio">
+          <span class="curio-icon" aria-hidden="true"></span>
+          <p><strong>Espécies afetadas:</strong> Mais de 700 espécies marinhas já foram impactadas pelo plástico.</p>
+        </div>
+        <div class="curio">
+          <span class="curio-icon" aria-hidden="true"></span>
+          <p><strong>Tempo de decomposição:</strong> Alguns resíduos podem levar até 400 anos para se decompor.</p>
+        </div>
+        <div class="curio">
+          <span class="curio-icon" aria-hidden="true"></span>
+          <p><strong>Microplásticos:</strong> Já foram encontrados até nas profundezas do oceano.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fatos / Ciência -->
+    <section id="fatos" aria-labelledby="fatos-title">
+      <h2 id="fatos-title">Fatos e ciência</h2>
+      <p class="section-intro">Três pontos essenciais para compreender causas e impactos.</p>
+      <div class="cards">
+        <article class="card" aria-label="Card: Plástico nos Oceanos">
+          <h3>Plástico nos Oceanos</h3>
+          <p>Mais de 8 milhões de toneladas de plástico são despejadas no mar todos os anos, prejudicando a vida marinha.</p>
+        </article>
+        <article class="card" aria-label="Card: Microplásticos Invisíveis">
+          <h3>Microplásticos Invisíveis</h3>
+          <p>Partículas minúsculas de plástico estão presentes na água que bebemos e nos peixes que consumimos.</p>
+        </article>
+        <article class="card" aria-label="Card: Zonas Mortas">
+          <h3>Zonas Mortas</h3>
+          <p>Excesso de nutrientes e poluição criam áreas sem oxigênio onde quase nenhuma forma de vida sobrevive.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" aria-labelledby="galeria-title">
+      <h2 id="galeria-title">Galeria</h2>
+      <p class="section-intro">Imagens para refletir sobre a urgência de agir.</p>
+      <div class="gallery" role="list">
+        <figure role="listitem">
+          <img src="https://marsemfim.com.br/wp-content/uploads/2023/11/baleia-morta-por-poluicao-de-plastico.jpg.webp" alt="Baleia encalhada com sinais de poluição por plástico." />
+          <figcaption>Baleia vítima de poluição por plástico</figcaption>
+        </figure>
+        <figure role="listitem">
+          <img src="https://novomomento.com.br/wp-content/uploads/2020/07/c69dcdde-poluicao-plastico-oceano.jpg" alt="Garrafas e sacolas espalhadas no mar." />
+          <figcaption>Foca enredada em plástico</figcaption>
+        </figure>
+        <figure role="listitem">
+          <img src="https://api.faroldabahia.com/fotos/farol_noticias/89978/IMAGEM_NOTICIA_0.jpg?v=b3d3959f2e3519e584a4946bae428c82" alt="Tartaruga marinha presa em resíduo plástico." />
+          <figcaption>Peixe com bituca na boca</figcaption>
+        </figure>
+        <figure role="listitem">
+          <img src="https://services.meteored.com/img/article/poluicao-plastica-mais-da-metade-do-lixo-encontrado-em-praias-do-nordeste-veio-da-africa-1729015422698_512.jpg" alt="Plásticos acumulados em praia do Nordeste." />
+          <figcaption>Tartaruga presa em resíduos de pesca</figcaption>
+        </figure>
+        <figure role="listitem">
+          <img src="https://tellus.org.br/wp-content/uploads/2019/11/plastico-mares-oceanos-metodologia-tellus.jpg" alt="Infográfico sobre plástico nos mares." />
+          <figcaption>Peixe nadando entre resíduos</figcaption>
+        </figure>
+        <figure role="listitem">
+          <img src="https://thumbs.dreamstime.com/b/polui%C3%A7%C3%A3o-marinha-pl%C3%A1stica-selo-travado-em-n-de-pesca-nylon-tangled-118987979.jpg" alt="Foca presa em rede de nylon." />
+          <figcaption>Foca presa em redes de pesca</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Perguntas frequentes</h2>
+      <div class="faq">
+        <details>
+          <summary>O que é a poluição do mar?</summary>
+          <p>É a contaminação dos oceanos por lixo, produtos químicos e esgoto.</p>
+        </details>
+        <details>
+          <summary>Qual é o principal tipo de lixo encontrado no mar?</summary>
+          <p>O plástico é o mais comum e perigoso.</p>
+        </details>
+        <details>
+          <summary>Como o plástico chega ao oceano?</summary>
+          <p>Através de rios, vento e descarte incorreto nas cidades.</p>
+        </details>
+        <details>
+          <summary>A poluição do mar afeta os humanos?</summary>
+          <p>Sim. Consumimos peixes contaminados e perdemos recursos naturais.</p>
+        </details>
+        <details>
+          <summary>O que são microplásticos?</summary>
+          <p>Pedaços minúsculos de plástico que poluem a água e os alimentos.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA final -->
+    <section aria-labelledby="cta-title">
+      <h2 id="cta-title">Aja agora</h2>
+      <div class="cta">
+        <!-- TODO: Ajustar navegação interna se reorganizar seções -->
+        <a href="#fatos" aria-label="Ir para Fatos e Ciência">Aprenda mais</a>
+        <a href="#galeria" aria-label="Ir para a Galeria de imagens">Veja a realidade</a>
+        <a href="#faq" aria-label="Ir para Perguntas frequentes">Tire dúvidas</a>
+      </div>
+    </section>
+
+    <!-- Créditos / Fontes -->
+    <section aria-labelledby="credits-title">
+      <h2 id="credits-title">Créditos e fontes</h2>
+      <p class="section-intro">Imagens e referências utilizadas neste projeto.</p>
+      <ul>
+        <li><a href="https://marsemfim.com.br" target="_blank" rel="noopener">Mar Sem Fim</a></li>
+        <li><a href="https://meteored.com" target="_blank" rel="noopener">Meteored</a></li>
+        <li><a href="https://tellus.org.br" target="_blank" rel="noopener">Instituto Tellus</a></li>
+        <li><a href="https://novomomento.com.br" target="_blank" rel="noopener">Novo Momento</a></li>
+        <li><a href="https://faroldabahia.com" target="_blank" rel="noopener">Farol da Bahia</a></li>
+        <li><a href="https://dreamstime.com" target="_blank" rel="noopener">Dreamstime</a></li>
+        <!-- TODO: Adicionar fontes científicas adicionais (artigos, relatórios) -->
+      </ul>
+    </section>
+  </main>
+
+  <!-- Chatbot modal deslizante -->
+ <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+    <df-messenger
+      intent="WELCOME"
+      chat-title="Chatbot-IA"
+      agent-id="7e9ea28d-fc2a-4f18-a435-1d31267d9a34"
+      language-code="pt-br">
+    </df-messenger>
+
+  <footer role="contentinfo">
+    <div class="container footer-grid">
+      <div class="authors">
+        <strong>Projeto — Fundo do Mar</strong><br />
+        Equipe WIT<br />
+        Autores: Heitor Ferraz de Lima; Lucas Henrique da Silva Santos; Murilo Martins de Andrade; Arthur Luz Marculino
+      </div>
+      <div class="top-link">
+        <a href="#hero-title" aria-label="Voltar ao topo">Voltar ao topo</a>
+        <div id="year" aria-label="Ano atual"></div>
+      </div>
+    </div>
+  </footer>
+    <!-- MODAL DE RECONHECIMENTO FACIAL -->
+  <div id="cameraModal" class="modal" aria-hidden="true" style="display:none;">
+    <div class="modal-content">
+      <button id="fecharModal" class="botao-fechar" title="Fechar">❌</button>
+      <h2 class="modal-title">Reconhecimento Facial</h2>
+      <div class="video-wrap">
+        <video id="video" autoplay muted playsinline></video>
+      </div>
+      <div class="controls">
+        <button id="tirarFoto" class="botao-foto" title="Tirar foto">📸</button>
+      </div>
+      <p id="modalStatus" class="modal-status">Aguardando...</p>
+      <canvas id="fotoCanvas" style="display:none;"></canvas>
+    </div>
+  </div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
